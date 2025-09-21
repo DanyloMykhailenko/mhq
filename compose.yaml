@@ -1,0 +1,6 @@
+services:
+  mhq:
+    container_name: server-container
+    image: DanyloMykhailenko/mhq:latest
+    ports:
+      - "8080:8080"
