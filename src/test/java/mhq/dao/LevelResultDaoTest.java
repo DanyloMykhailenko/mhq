@@ -16,8 +16,10 @@ class LevelResultDaoTest {
         Long userId = 1L;
         Long anotherUserId = 2L;
         int limit = 5;
+        Integer highestLevelOneResult = 65;
         LevelResultId levelOneResultId = new LevelResultId(userId, 1L);
-        levelResultDao.save(levelOneResultId, 65);
+        levelResultDao.save(levelOneResultId, highestLevelOneResult);
+        levelResultDao.save(levelOneResultId, 64);
         LevelResultId levelTwoResultId = new LevelResultId(userId, 2L);
         levelResultDao.save(levelTwoResultId, 92);
         LevelResultId levelThreeResultId = new LevelResultId(userId, 3L);
@@ -39,6 +41,7 @@ class LevelResultDaoTest {
         assertEquals(levelTwoResultId, actualLevelResults.get(2).getId());
         assertEquals(levelFourResultId, actualLevelResults.get(3).getId());
         assertEquals(levelOneResultId, actualLevelResults.get(4).getId());
+        assertEquals(highestLevelOneResult, actualLevelResults.get(4).getScore());
     }
 
     @Test
@@ -47,8 +50,10 @@ class LevelResultDaoTest {
         Long levelId = 1L;
         Long anotherLevelId = 2L;
         int limit = 5;
+        Integer highestUserOneResult = 42;
         LevelResultId userOneResultId = new LevelResultId(1L, levelId);
-        levelResultDao.save(userOneResultId, 42);
+        levelResultDao.save(userOneResultId, highestUserOneResult);
+        levelResultDao.save(userOneResultId, 41);
         LevelResultId userTwoResultId = new LevelResultId(2L, levelId);
         levelResultDao.save(userTwoResultId, 84);
         LevelResultId userThreeResultId = new LevelResultId(3L, levelId);
@@ -70,6 +75,7 @@ class LevelResultDaoTest {
         assertEquals(userFourResultId, actualLevelResults.get(2).getId());
         assertEquals(userTwoResultId, actualLevelResults.get(3).getId());
         assertEquals(userOneResultId, actualLevelResults.get(4).getId());
+        assertEquals(highestUserOneResult, actualLevelResults.get(4).getScore());
     }
 
 }
