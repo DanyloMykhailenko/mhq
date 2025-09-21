@@ -8,7 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 public class LevelResult {
 
-    @Getter(AccessLevel.NONE)
     @NonNull
     private final LevelResultId id;
 
